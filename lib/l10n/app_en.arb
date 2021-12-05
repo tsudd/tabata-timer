@@ -1,0 +1,22 @@
+{
+    "app_name": "Tabata",
+    "@app_name": {
+        "description": "App name"
+    },
+    "settings_title": "Settings",
+    "@settings_title": {
+        "description": "Settings page bar title"
+    },
+    "toggle_theme_btn": "Toggle theme",
+    "@toggle_theme_btn": {
+        "description": "Theme toggle button title"
+    },
+    "lang_selection_lbl": "Select app language",
+    "@lang_selection_lbl": {
+        "description": "Label of app selection dropdown"
+    },
+    "font_sel_lbl": "Select font size",
+    "@font_sel_lbl": {
+        "description": "Label of font size selection dropdown"
+    }
+}
