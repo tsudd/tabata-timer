@@ -35,12 +35,9 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                 child: Column(children: [
                   TextFormField(
                     keyboardType: TextInputType.number,
-                    inputFormatters: [
-                      FilteringTextInputFormatter.digitsOnly,
-                      LengthLimitingTextInputFormatter(30)
-                    ],
+                    inputFormatters: [LengthLimitingTextInputFormatter(30)],
                     validator: (value) => _handleTitleValidation(value),
-                    onChanged: (value) => {wormUp = value},
+                    onChanged: (value) => {title = value},
                     decoration: const InputDecoration(
                         border: OutlineInputBorder(),
                         hintText: 'Enter the title',
@@ -69,7 +66,10 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                   ),
                   TextFormField(
                     keyboardType: TextInputType.number,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(4)
+                    ],
                     validator: (value) => _handleTimeValidation(value),
                     onChanged: (value) => {workout = value},
                     decoration: const InputDecoration(
@@ -83,7 +83,10 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                   ),
                   TextFormField(
                     keyboardType: TextInputType.number,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(4)
+                    ],
                     validator: (value) => _handleTimeValidation(value),
                     onChanged: (value) => {rest = value},
                     decoration: const InputDecoration(
@@ -97,7 +100,10 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                   ),
                   TextFormField(
                     keyboardType: TextInputType.number,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(4)
+                    ],
                     validator: (value) => _handleTimeValidation(value),
                     onChanged: (value) => {cycles = value},
                     decoration: const InputDecoration(
@@ -111,7 +117,10 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                   ),
                   TextFormField(
                     keyboardType: TextInputType.number,
-                    inputFormatters: [FilteringTextInputFormatter.digitsOnly],
+                    inputFormatters: [
+                      FilteringTextInputFormatter.digitsOnly,
+                      LengthLimitingTextInputFormatter(4)
+                    ],
                     validator: (value) => _handleTimeValidation(value),
                     onChanged: (value) => {cooldown = value},
                     decoration: const InputDecoration(
@@ -156,9 +165,6 @@ class _EditSeqWidget extends State<EditSeqWidget> {
   String? _handleTimeValidation(String? value) {
     if (value == null || value.isEmpty) {
       return "Enter duration";
-    }
-    if (value.length > 4) {
-      return "Duration is too long";
     }
     return null;
   }

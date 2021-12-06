@@ -39,6 +39,8 @@ class AppView extends StatelessWidget {
         var light = ThemeData.light();
         selTheme = light.copyWith(
             textTheme: light.textTheme.copyWith(
+                caption: light.textTheme.caption!
+                    .copyWith(fontSize: state.styleSize * 0.7),
                 bodyText1: light.textTheme.bodyText1!
                     .copyWith(fontSize: state.styleSize),
                 button: light.textTheme.button!
@@ -47,6 +49,8 @@ class AppView extends StatelessWidget {
         var dark = ThemeData.dark();
         selTheme = dark.copyWith(
             textTheme: dark.textTheme.copyWith(
+                caption: dark.textTheme.caption!
+                    .copyWith(fontSize: state.styleSize * 0.7),
                 bodyText1: dark.textTheme.bodyText1!
                     .copyWith(fontSize: state.styleSize),
                 button: dark.textTheme.button!
@@ -65,7 +69,7 @@ class AppView extends StatelessWidget {
         locale: state.locale,
         routes: {
           '/': (context) => const SeqPage(),
-          '/edit': (context) => EditSeqPage(),
+          '/edit': (context) => const EditSeqPage(),
           '/tabata': (context) => TabataPage(),
           '/settings': (context) => const SettingsPage()
         },

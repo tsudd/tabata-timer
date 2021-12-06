@@ -118,20 +118,32 @@ class _TimerDescription extends StatelessWidget {
                 title,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyText1!
+                    .copyWith(fontWeight: FontWeight.bold),
               ),
               const Padding(padding: EdgeInsets.only(bottom: 2.0)),
-              Text(
-                warmUp,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: const TextStyle(
-                  fontSize: 12.0,
-                  color: Colors.black54,
-                ),
-              ),
+              Text("${AppLocalizations.of(context)!.warmup_lbl}: $warmUp",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.caption),
+              Text("${AppLocalizations.of(context)!.workout_lbl}: $workout",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.caption),
+              Text("${AppLocalizations.of(context)!.rest_lbl}: $rest",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.caption),
+              Text("${AppLocalizations.of(context)!.cycles_lbl}: $cycles",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.caption),
+              Text("${AppLocalizations.of(context)!.total_dur_lbl}: $warmUp",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: Theme.of(context).textTheme.caption),
             ],
           ),
         )
@@ -167,7 +179,7 @@ class TimerItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: SizedBox(
-        height: 100,
+        height: 140,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[

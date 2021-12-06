@@ -31,6 +31,10 @@
     "@rest_lbl": {
         "description": "Rest label"
     },
+    "warmup_lbl": "Warm-up",
+    "@warmap_lbl": {
+        "description": "Label for warm up time"
+    },
     "cycles_lbl": "Cycles",
     "@cycles_lbl": {
         "description": "Cycles label"
@@ -50,5 +54,9 @@
     "title_hint": "Enter the title",
     "@title_hint": {
         "description": "Enter the title"
+    },
+    "total_dur_lbl": "Total duration",
+    "@total_dur_lbl": {
+        "description": "Total duration label"
     }
 }

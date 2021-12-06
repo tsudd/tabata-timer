@@ -9,5 +9,7 @@
     "rest_lbl": "Отдых",
     "cycles_lbl": "Повторения",
     "cooldown_lbl": "Завершение",
-    "total_duration_lbl": "Всего времени"
+    "total_duration_lbl": "Всего времени",
+    "warmup_lbl": "Подготовка",
+    "total_dur_lbl": "Продолжительноть"
 }
