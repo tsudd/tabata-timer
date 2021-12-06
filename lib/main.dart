@@ -64,7 +64,7 @@ class AppView extends StatelessWidget {
         initialRoute: '/',
         locale: state.locale,
         routes: {
-          '/': (context) => SeqPage(),
+          '/': (context) => const SeqPage(),
           '/edit': (context) => EditSeqPage(),
           '/tabata': (context) => TabataPage(),
           '/settings': (context) => const SettingsPage()

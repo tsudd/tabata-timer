@@ -2,7 +2,7 @@ import 'dart:core';
 
 import 'package:flutter/material.dart';
 
-class Timer {
+class TTimer {
   final Color color;
   final int wormUp;
   final int workout;
@@ -10,6 +10,7 @@ class Timer {
   final int cycles;
   final int cooldown;
   final String title;
+  String id = "";
 
   static const String colorAccessor = 'color';
   static const String wormUpAccessor = 'wormUp';
@@ -19,7 +20,7 @@ class Timer {
   static const String cooldownAccessor = 'cooldown';
   static const String titleAccessor = 'title';
 
-  Timer(
+  TTimer(
       {required this.title,
       required this.color,
       required this.wormUp,
@@ -28,8 +29,12 @@ class Timer {
       required this.cycles,
       required this.cooldown});
 
-  factory Timer.fromJson(Map<String, dynamic> json) {
-    return Timer(
+  int getTotalDuration() {
+    return cycles * (wormUp + workout + rest + cooldown);
+  }
+
+  factory TTimer.fromJson(Map<String, dynamic> json) {
+    return TTimer(
         color: Color(json[colorAccessor]),
         cooldown: json[cooldownAccessor],
         cycles: json[cyclesAccessor],

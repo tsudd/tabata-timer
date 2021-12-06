@@ -18,5 +18,37 @@
     "font_sel_lbl": "Select font size",
     "@font_sel_lbl": {
         "description": "Label of font size selection dropdown"
+    },
+    "seconds": "s",
+    "@seconds": {
+        "description": "Seconds as unit of measure label"
+    },
+    "workout_lbl": "Workout",
+    "@workout": {
+        "description": "Workout label"
+    },
+    "rest_lbl": "Rest",
+    "@rest_lbl": {
+        "description": "Rest label"
+    },
+    "cycles_lbl": "Cycles",
+    "@cycles_lbl": {
+        "description": "Cycles label"
+    },
+    "cooldown_lbl": "Cooldown",
+    "@cooldown_lbl": {
+        "description": "Cooldown label"
+    },
+    "total_duration_lbl": "Total duration",
+    "@total_duration_lbl": {
+        "description": "Label for total duration represantion"
+    },
+    "title_lbl": "Title",
+    "@title_lbl": {
+        "desription": "Title label"
+    },
+    "title_hint": "Enter the title",
+    "@title_hint": {
+        "description": "Enter the title"
     }
 }

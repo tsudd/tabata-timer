@@ -3,5 +3,11 @@
     "settings_title": "Настройки",
     "toggle_theme_btn": "Сменить тему",
     "lang_selection_lbl": "Выбор языка приложения",
-    "font_sel_lbl": "Выбор размера шрифта"
+    "font_sel_lbl": "Выбор размера шрифта",
+    "seconds": "с",
+    "workout_lbl": "Тренировка",
+    "rest_lbl": "Отдых",
+    "cycles_lbl": "Повторения",
+    "cooldown_lbl": "Завершение",
+    "total_duration_lbl": "Всего времени"
 }
