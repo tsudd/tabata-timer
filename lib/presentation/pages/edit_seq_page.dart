@@ -7,6 +7,8 @@ class EditSeqPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(appBar: AppBar(), body: const EditSeqWidget());
+    return Scaffold(
+        appBar: AppBar(),
+        body: const SingleChildScrollView(child: EditSeqWidget()));
   }
 }

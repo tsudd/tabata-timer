@@ -58,5 +58,29 @@
     "total_dur_lbl": "Total duration",
     "@total_dur_lbl": {
         "description": "Total duration label"
+    },
+    "add_btn": "Add",
+    "@add_btn": {
+        "description": "Add button label"
+    },
+    "color_pick": "Select color",
+    "@color_pick": {
+        "description": "Color selection label"
+    },
+    "empty_input": "Enter duration",
+    "@empty_input": {
+        "description": "Sign apearing when form input is empty"
+    },
+    "empty_title": "Title must be non-empty",
+    "@empty_title": {
+        "description": "Sign apearing when title is empty while timer creation"
+    },
+    "done_btn": "Done",
+    "@done_btn": {
+        "description": "Label for done button"
+    },
+    "init_title": "New timer",
+    "@init_title": {
+        "description": "Init name for a new timer"
     }
 }

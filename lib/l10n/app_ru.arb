@@ -11,5 +11,11 @@
     "cooldown_lbl": "Завершение",
     "total_duration_lbl": "Всего времени",
     "warmup_lbl": "Подготовка",
-    "total_dur_lbl": "Продолжительноть"
+    "total_dur_lbl": "Продолжительноть",
+    "add_btn": "Добавить",
+    "color_pick": "Выберите цвет",
+    "empty_input": "Введите продолжительность",
+    "empty_title": "Название должно быть не пустым",
+    "done_btn": "Готово",
+    "init_title": "Новый таймер"
 }
