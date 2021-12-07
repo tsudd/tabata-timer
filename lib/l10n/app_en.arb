@@ -82,5 +82,9 @@
     "init_title": "New timer",
     "@init_title": {
         "description": "Init name for a new timer"
+    },
+    "delete_all_btn": "Delete all user data",
+    "@delete_all_btn": {
+        "description": "Delete all button label"
     }
 }

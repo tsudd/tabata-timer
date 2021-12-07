@@ -35,7 +35,7 @@ class TTimer {
 
   factory TTimer.fromJson(Map<String, dynamic> json) {
     return TTimer(
-        color: Color(json[colorAccessor]),
+        color: Color(int.parse(json[colorAccessor], radix: 16)),
         cooldown: json[cooldownAccessor],
         cycles: json[cyclesAccessor],
         rest: json[restAccessor],
@@ -47,7 +47,7 @@ class TTimer {
   Map<String, dynamic> toJson() {
     return {
       titleAccessor: title,
-      colorAccessor: color.toString(),
+      colorAccessor: color.toString().split('(0x')[1].split(')')[0],
       wormUpAccessor: wormUp,
       workoutAccessor: workout,
       restAccessor: rest,

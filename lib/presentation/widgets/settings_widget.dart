@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tabata/common/setup.dart';
+import 'package:tabata/data/repos/timers_local_storage.dart';
 import 'package:tabata/presentation/blocs/app_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -14,6 +15,8 @@ class SettingsWidget extends StatelessWidget {
       return Container(
           padding: const EdgeInsets.all(20),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               ElevatedButton(
                   onPressed: () async => _setTheme(context),
@@ -71,7 +74,17 @@ class SettingsWidget extends StatelessWidget {
                           style: Theme.of(context).textTheme.bodyText1),
                       value: 1.5),
                 ],
-              )
+              ),
+              const SizedBox(
+                height: 60,
+              ),
+              ElevatedButton(
+                  onPressed: () => _delete_all(),
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all<Color>(Colors.red)),
+                  child: Text(AppLocalizations.of(context)!.delete_all_btn,
+                      style: Theme.of(context).textTheme.button)),
             ],
           ));
     });
@@ -83,6 +96,10 @@ class SettingsWidget extends StatelessWidget {
 
   void _setLanguage(BuildContext context, Locale? loc) {
     BlocProvider.of<AppCubit>(context).setLocale(loc);
+  }
+
+  void _delete_all() {
+    TimersLocalStorage.get_instance().removeAllTimersCached();
   }
 
   _setFontSize(BuildContext context, Object? size) {

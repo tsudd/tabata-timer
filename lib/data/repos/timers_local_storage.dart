@@ -35,6 +35,10 @@ class TimersLocalStorage {
     }
   }
 
+  Future<int> getTimersAmount() async {
+    return Future.value(hotTimers.length);
+  }
+
   Future<List<TTimer>> getTimersCached() async {
     final jsonTimers = (await preferences).getString(timers);
     String tmrs = jsonTimers ?? '';
@@ -52,23 +56,28 @@ class TimersLocalStorage {
   }
 
   Future<String> saveTimerCached(TTimer timer) async {
-    final jsonTimer = json.encode(timer.toJson());
     var id = hotTimers.length.toString();
+    timer.id = id;
+    final jsonTimer = json.encode(timer.toJson());
     hotTimers[id] = jsonTimer;
+    (await preferences).setString(timers, json.encode(hotTimers));
     return Future.value(id);
   }
 
   void removeTimerCached(String id) async {
     hotTimers.remove(id);
+    (await preferences).setString(timers, json.encode(hotTimers));
   }
 
   void updateTimerCached(String id, TTimer timer) async {
     final jsonTimer = json.encode(timer.toJson());
     hotTimers[id] = jsonTimer;
+    (await preferences).setString(timers, json.encode(hotTimers));
   }
 
   void removeAllTimersCached() async {
     hotTimers.clear();
+    (await preferences).setString(timers, "");
   }
 
   void saveAllTimersCached() async {

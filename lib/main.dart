@@ -22,7 +22,7 @@ class App extends StatelessWidget {
   }
 
   AppCubit _loadCubit() {
-    var cub = AppCubit(AppSetup.get_default());
+    var cub = AppCubit(AppSetup.getDefault());
     cub.tryLoadSetup();
     return cub;
   }

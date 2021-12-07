@@ -9,7 +9,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const SettingsWidget(),
+      body: const SingleChildScrollView(child: SettingsWidget()),
       appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.settings_title),
       ),

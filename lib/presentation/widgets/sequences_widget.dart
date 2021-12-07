@@ -53,17 +53,32 @@ class _SeqState extends State<SeqWidget> {
     );
   }
 
-  void _pushSettings(BuildContext context) {
-    Navigator.of(context).pushNamed('/settings');
+  void _pushSettings(BuildContext context) async {
+    Navigator.of(context).pushNamed('/settings').then((_) async => {
+          if (await store.getTimersAmount() == 0)
+            {
+              setState(() {
+                timers = [];
+              })
+            }
+        });
   }
 
   void _createTimer(BuildContext context) {
-    Navigator.of(context).pushNamed('/edit').then((newTimer) => {
+    Navigator.of(context).pushNamed('/edit').then((newTimer) async => {
           if (newTimer != null && newTimer is TTimer)
             {
+              newTimer.id = await store.saveTimerCached(newTimer),
               setState(() => {timers.add(newTimer)})
             }
         });
+  }
+
+  void _removeTimer(TTimer timer) {
+    store.removeTimerCached(timer.id);
+    setState(() {
+      timers.remove(timer);
+    });
   }
 
   List<Widget> _buildTimersCards() {
@@ -78,6 +93,9 @@ class _SeqState extends State<SeqWidget> {
         cooldown: element.cooldown.toString(),
         totalDuration: element.getTotalDuration().toString(),
         color: element.color,
+        onRemove: () => _removeTimer(element),
+        onEdit: () => {},
+        onPlay: () => {},
       ));
     }
     return ans;
@@ -162,7 +180,10 @@ class TimerItem extends StatelessWidget {
       required this.cycles,
       required this.cooldown,
       required this.totalDuration,
-      required this.color})
+      required this.color,
+      required this.onEdit,
+      required this.onPlay,
+      required this.onRemove})
       : super(key: key);
 
   final String title;
@@ -173,6 +194,10 @@ class TimerItem extends StatelessWidget {
   final String cooldown;
   final String totalDuration;
   final Color color;
+
+  final Function onRemove;
+  final Function onEdit;
+  final Function onPlay;
 
   @override
   Widget build(BuildContext context) {
@@ -200,6 +225,29 @@ class TimerItem extends StatelessWidget {
                   totalDuration: totalDuration,
                 ),
               ),
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  child: const Icon(Icons.delete_forever),
+                  onPressed: () => onRemove(),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  child: const Icon(Icons.edit),
+                  onPressed: () => {},
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                ElevatedButton(
+                  child: const Icon(Icons.play_arrow),
+                  onPressed: () => {},
+                )
+              ],
             )
           ],
         ),

@@ -12,7 +12,7 @@ class AppSetup {
   }
   static const locales = [Locale('en', 'US'), Locale('ru', 'RU')];
 
-  static AppSetup get_default() {
+  static AppSetup getDefault() {
     return AppSetup(day: false, locale: const Locale('en', 'US'), fontSize: 1);
   }
 }

@@ -7,6 +7,7 @@
     "seconds": "с",
     "workout_lbl": "Тренировка",
     "rest_lbl": "Отдых",
+    "title_hint": "Введите название таймера",
     "cycles_lbl": "Повторения",
     "cooldown_lbl": "Завершение",
     "total_duration_lbl": "Всего времени",
@@ -17,5 +18,6 @@
     "empty_input": "Введите продолжительность",
     "empty_title": "Название должно быть не пустым",
     "done_btn": "Готово",
-    "init_title": "Новый таймер"
+    "init_title": "Новый таймер",
+    "delete_all_btn": "Удалить все данные"
 }

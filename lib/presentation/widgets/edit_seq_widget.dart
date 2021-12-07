@@ -18,16 +18,17 @@ class _EditSeqWidget extends State<EditSeqWidget> {
   final _formKey = GlobalKey<FormState>();
 
   String title = '';
-  String wormUp = '';
-  String workout = '';
-  String rest = '';
-  String cycles = '';
-  String cooldown = '';
+  String wormUp = '5';
+  String workout = '10';
+  String rest = '3';
+  String cycles = '4';
+  String cooldown = '13';
   Color pickerColor = const Color(0xff443a49);
   Color currentColor = const Color(0xff443a49);
 
   @override
   Widget build(BuildContext context) {
+    title = AppLocalizations.of(context)!.init_title;
     return Container(
         padding: const EdgeInsets.all(20),
         child: Column(children: [
@@ -36,7 +37,7 @@ class _EditSeqWidget extends State<EditSeqWidget> {
             child: Column(children: [
               TextFormField(
                 keyboardType: TextInputType.number,
-                initialValue: AppLocalizations.of(context)!.init_title,
+                initialValue: title,
                 inputFormatters: [LengthLimitingTextInputFormatter(30)],
                 validator: (value) => _handleTitleValidation(value),
                 onChanged: (value) => {title = value},
@@ -55,6 +56,7 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                   FilteringTextInputFormatter.digitsOnly,
                   LengthLimitingTextInputFormatter(4)
                 ],
+                initialValue: wormUp,
                 validator: (value) => _handleTimeValidation(value),
                 onChanged: (value) => {wormUp = value},
                 decoration: const InputDecoration(
@@ -72,6 +74,7 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                   FilteringTextInputFormatter.digitsOnly,
                   LengthLimitingTextInputFormatter(4)
                 ],
+                initialValue: workout,
                 validator: (value) => _handleTimeValidation(value),
                 onChanged: (value) => {workout = value},
                 decoration: const InputDecoration(
@@ -89,6 +92,7 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                   FilteringTextInputFormatter.digitsOnly,
                   LengthLimitingTextInputFormatter(4)
                 ],
+                initialValue: rest,
                 validator: (value) => _handleTimeValidation(value),
                 onChanged: (value) => {rest = value},
                 decoration: const InputDecoration(
@@ -106,6 +110,7 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                   FilteringTextInputFormatter.digitsOnly,
                   LengthLimitingTextInputFormatter(4)
                 ],
+                initialValue: cycles,
                 validator: (value) => _handleTimeValidation(value),
                 onChanged: (value) => {cycles = value},
                 decoration: const InputDecoration(
@@ -123,6 +128,7 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                   FilteringTextInputFormatter.digitsOnly,
                   LengthLimitingTextInputFormatter(4)
                 ],
+                initialValue: cooldown,
                 validator: (value) => _handleTimeValidation(value),
                 onChanged: (value) => {cooldown = value},
                 decoration: const InputDecoration(
