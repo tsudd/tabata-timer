@@ -69,7 +69,7 @@ class TimersLocalStorage {
     (await preferences).setString(timers, json.encode(hotTimers));
   }
 
-  void updateTimerCached(String id, TTimer timer) async {
+  Future<void> updateTimerCached(String id, TTimer timer) async {
     final jsonTimer = json.encode(timer.toJson());
     hotTimers[id] = jsonTimer;
     (await preferences).setString(timers, json.encode(hotTimers));

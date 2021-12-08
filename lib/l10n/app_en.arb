@@ -86,5 +86,9 @@
     "delete_all_btn": "Delete all user data",
     "@delete_all_btn": {
         "description": "Delete all button label"
+    },
+    "save_btn": "Save",
+    "@save_btn": {
+        "description": "Save button label"
     }
 }

@@ -17,6 +17,9 @@ class EditSeqWidget extends StatefulWidget {
 class _EditSeqWidget extends State<EditSeqWidget> {
   final _formKey = GlobalKey<FormState>();
 
+  String? buttonLabel;
+  TTimer? initial;
+
   String title = '';
   String wormUp = '5';
   String workout = '10';
@@ -29,6 +32,20 @@ class _EditSeqWidget extends State<EditSeqWidget> {
   @override
   Widget build(BuildContext context) {
     title = AppLocalizations.of(context)!.init_title;
+    TTimer? timer = ModalRoute.of(context)!.settings.arguments as TTimer?;
+    if (initial == null && timer != null) {
+      initial = timer;
+      title = timer.title;
+      wormUp = timer.wormUp.toString();
+      workout = timer.workout.toString();
+      rest = timer.rest.toString();
+      cycles = timer.cycles.toString();
+      cooldown = timer.cooldown.toString();
+      currentColor = timer.color;
+      buttonLabel = AppLocalizations.of(context)!.save_btn;
+    } else {
+      buttonLabel = AppLocalizations.of(context)!.add_btn;
+    }
     return Container(
         padding: const EdgeInsets.all(20),
         child: Column(children: [
@@ -165,7 +182,7 @@ class _EditSeqWidget extends State<EditSeqWidget> {
                   child: ElevatedButton(
                       onPressed: () => _submitInput(context),
                       child: Text(
-                        AppLocalizations.of(context)!.add_btn,
+                        buttonLabel!,
                         style: Theme.of(context).textTheme.button,
                       )))),
         ]));

@@ -35,7 +35,7 @@ class _SeqState extends State<SeqWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        children: _buildTimersCards(),
+        children: _buildTimersCards(context),
       ),
       appBar: AppBar(
         title: const Text("Tabata"),
@@ -81,7 +81,23 @@ class _SeqState extends State<SeqWidget> {
     });
   }
 
-  List<Widget> _buildTimersCards() {
+  void _editTimer(BuildContext context, TTimer timer) {
+    Navigator.of(context)
+        .pushNamed('/edit', arguments: timer)
+        .then((newTimer) async => {
+              if (newTimer != null && newTimer is TTimer)
+                {
+                  await store.updateTimerCached(timer.id, newTimer),
+                  setState(() => {timers[timers.indexOf(timer)] = newTimer})
+                }
+            });
+  }
+
+  void _playTimer(BuildContext context, TTimer timer) {
+    Navigator.of(context).pushNamed('/tabata', arguments: timer);
+  }
+
+  List<Widget> _buildTimersCards(BuildContext context) {
     List<Widget> ans = [];
     for (var element in timers) {
       ans.add(TimerItem(
@@ -94,8 +110,8 @@ class _SeqState extends State<SeqWidget> {
         totalDuration: element.getTotalDuration().toString(),
         color: element.color,
         onRemove: () => _removeTimer(element),
-        onEdit: () => {},
-        onPlay: () => {},
+        onEdit: () => _editTimer(context, element),
+        onPlay: () => _playTimer(context, element),
       ));
     }
     return ans;
@@ -226,29 +242,31 @@ class TimerItem extends StatelessWidget {
                 ),
               ),
             ),
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ElevatedButton(
-                  child: const Icon(Icons.delete_forever),
-                  onPressed: () => onRemove(),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                  child: const Icon(Icons.edit),
-                  onPressed: () => {},
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                ElevatedButton(
-                  child: const Icon(Icons.play_arrow),
-                  onPressed: () => {},
-                )
-              ],
-            )
+            Padding(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ElevatedButton(
+                      child: const Icon(Icons.delete_forever),
+                      onPressed: () => onRemove(),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      child: const Icon(Icons.edit),
+                      onPressed: () => onEdit(),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    ElevatedButton(
+                      child: const Icon(Icons.play_arrow),
+                      onPressed: () => onPlay(),
+                    )
+                  ],
+                ))
           ],
         ),
       ),
