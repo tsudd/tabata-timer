@@ -1,6 +1,8 @@
 import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:tabata/data/models/timer.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -24,6 +26,9 @@ class _TabataWidgetState extends State<TabataWidget> {
   List<_TabataStep> steps = [];
   int selectedStep = 0;
 
+  AudioCache audioCache = AudioCache();
+  static const String alarmSoundPath = "sound/oof.mp3";
+
   void reset() {
     setState(() {
       dur = const Duration();
@@ -43,8 +48,10 @@ class _TabataWidgetState extends State<TabataWidget> {
             label: steps[selectedStep - 1].label,
             seconds: steps[selectedStep - 1].seconds);
         timer?.cancel();
+        audioCache.play(alarmSoundPath);
         reset();
       } else if (seconds < 0) {
+        audioCache.play(alarmSoundPath);
         dur = _nextStep();
       } else {
         dur = Duration(seconds: seconds);
@@ -159,6 +166,9 @@ class _TabataWidgetState extends State<TabataWidget> {
         ),
         floatingActionButton:
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          const SizedBox(
+            width: 33,
+          ),
           Expanded(
               child: ElevatedButton(
                   onPressed: () => _moveBack(),
