@@ -7,7 +7,7 @@ import 'package:tabata/data/repos/timers_local_storage.dart';
 class AppCubit extends Cubit<AppSetup> {
   AppCubit(AppSetup initialState) : super(initialState);
 
-  final localStorage = TimersLocalStorage.get_instance();
+  final localStorage = TimersLocalStorage.getInstance();
 
   bool day = false;
   Locale locale = const Locale('en', 'US');

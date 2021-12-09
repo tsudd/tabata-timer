@@ -15,7 +15,7 @@ class SeqWidget extends StatefulWidget {
 
 class _SeqState extends State<SeqWidget> {
   List<TTimer> timers = [];
-  final store = TimersLocalStorage.get_instance();
+  final store = TimersLocalStorage.getInstance();
 
   @override
   void initState() {
@@ -25,7 +25,10 @@ class _SeqState extends State<SeqWidget> {
 
   _load() async {
     try {
-      timers = await store.getTimersCached();
+      var tms = await store.getTimersCached();
+      setState(() {
+        timers = tms;
+      });
     } on Error {
       return;
     }
@@ -220,7 +223,7 @@ class TimerItem extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: SizedBox(
-        height: 140,
+        height: 160,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -245,21 +248,15 @@ class TimerItem extends StatelessWidget {
             Padding(
                 padding: const EdgeInsets.all(8),
                 child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     ElevatedButton(
                       child: const Icon(Icons.delete_forever),
                       onPressed: () => onRemove(),
                     ),
-                    const SizedBox(
-                      height: 20,
-                    ),
                     ElevatedButton(
                       child: const Icon(Icons.edit),
                       onPressed: () => onEdit(),
-                    ),
-                    const SizedBox(
-                      height: 20,
                     ),
                     ElevatedButton(
                       child: const Icon(Icons.play_arrow),

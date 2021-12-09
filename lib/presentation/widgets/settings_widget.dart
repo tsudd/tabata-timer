@@ -102,7 +102,7 @@ class SettingsWidget extends StatelessWidget {
   }
 
   void _delete_all() {
-    TimersLocalStorage.get_instance().removeAllTimersCached();
+    TimersLocalStorage.getInstance().removeAllTimersCached();
   }
 
   _setFontSize(BuildContext context, Object? size) {

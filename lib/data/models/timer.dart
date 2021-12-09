@@ -19,6 +19,7 @@ class TTimer {
   static const String cyclesAccessor = 'cycles';
   static const String cooldownAccessor = 'cooldown';
   static const String titleAccessor = 'title';
+  static const String idAccessor = "id";
 
   TTimer(
       {required this.title,
@@ -27,7 +28,8 @@ class TTimer {
       required this.workout,
       required this.rest,
       required this.cycles,
-      required this.cooldown});
+      required this.cooldown,
+      this.id = ""});
 
   int getTotalDuration() {
     return cycles * (wormUp + workout + rest + cooldown);
@@ -41,7 +43,8 @@ class TTimer {
         rest: json[restAccessor],
         title: json[titleAccessor],
         workout: json[workoutAccessor],
-        wormUp: json[wormUpAccessor]);
+        wormUp: json[wormUpAccessor],
+        id: json[idAccessor]);
   }
 
   Map<String, dynamic> toJson() {
@@ -52,7 +55,8 @@ class TTimer {
       workoutAccessor: workout,
       restAccessor: rest,
       cyclesAccessor: cycles,
-      cooldownAccessor: cooldown
+      cooldownAccessor: cooldown,
+      idAccessor: id
     };
   }
 }

@@ -9,7 +9,7 @@ class TimersLocalStorage {
   static TimersLocalStorage? instance;
   final Future<SharedPreferences> preferences = SharedPreferences.getInstance();
 
-  static TimersLocalStorage get_instance() {
+  static TimersLocalStorage getInstance() {
     instance ??= TimersLocalStorage();
     return instance!;
   }
