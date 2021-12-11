@@ -86,12 +86,18 @@ class _TabataWidgetState extends State<TabataWidget> {
 
   _moveNext() {
     var inProc = false;
-    if (timer!.isActive) {
+    if (timer != null && timer!.isActive) {
       stopTimer(resets: false);
       inProc = true;
     }
 
     if (selectedStep == steps.length) {
+      setState(() {
+        steps[selectedStep - 1] = _TabataStep(
+          label: steps[selectedStep - 1].label,
+          seconds: steps[selectedStep - 1].seconds,
+        );
+      });
       reset();
       return;
     }
@@ -103,7 +109,7 @@ class _TabataWidgetState extends State<TabataWidget> {
 
   _moveBack() {
     var inProc = false;
-    if (timer!.isActive) {
+    if (timer != null && timer!.isActive) {
       stopTimer(resets: false);
       inProc = true;
     }
@@ -160,6 +166,9 @@ class _TabataWidgetState extends State<TabataWidget> {
                 child: Column(
                   children: steps,
                 ),
+              ),
+              const SizedBox(
+                height: 100,
               )
             ],
           ),
